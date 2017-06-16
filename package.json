@@ -1,6 +1,6 @@
 {
   "name": "weus",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
     "name": "wangyanjun"
   },
@@ -19,7 +19,8 @@
   },
   "scripts": {
     "build": "babel --presets es2015 -d lib/ src/",
-    "watch": "npm-watch"
+    "watch": "npm-watch",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "chalk": "^1.1.3",

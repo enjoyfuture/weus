@@ -133,7 +133,7 @@ fullname().then((name) => {
       console.log(chalk.green(''));
       console.log(chalk.green('---------------------------------------------------'));
       console.log(chalk.green('You generate a app basing on WEUS success.'));
-      console.log(chalk.green('You can exec the command [npm install] to install the dependencies.'));
+      console.log(chalk.green(`You can exec the command [${appFolder ? `cd ${appFolder} && ` : ''}npm install] to install the dependencies.`));
       console.log(chalk.green('You can open the file "README.md" to view detailed commands.'));
       console.log(chalk.green('---------------------------------------------------'));
 
