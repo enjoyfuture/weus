@@ -1,0 +1,18 @@
+[
+  {
+    "name": "react-redux-router-base",
+    "description": "基于 Webpack, React, Redux, Router, Immutable, etc. 搭建的前端开发框架",
+    "author": "Linder Wang",
+    "git": "git@gitlab.cbpmgt.com:fe-team/react-redux-router-base.git",
+    "git-branch": "master",
+    "issues": "http://gitlab.cbpmgt.com/fe-team/react-redux-router-base/issues"
+  },
+  {
+    "name": "web-front-framework",
+    "description": "基于 fis3 jQuery KnockoutJS RequireJS 搭建的前端开发框架，支持 ie7+",
+    "author": "Linder Wang, yaohaiyang",
+    "git": "git@gitlab.cbpmgt.com:fe-team/web-front-framework.git",
+    "git-branch": "fis3",
+    "issues": "http://gitlab.cbpmgt.com/fe-team/web-front-framework/issues"
+  }
+]

@@ -1,6 +1,8 @@
 # weus
-A Comprehensive Guide for React Boilerplate containing Webpack, Gulp, React, Redux, Router, Immutable, etc.
+A Comprehensive Guide for generator web platform. The following are assets.
 
+* React Boilerplate containing Webpack, Gulp, React, Redux, Router, Immutable, etc.
+* 基于 fis3 jQuery KnockoutJS RequireJS 搭建的前端开发框架，支持 ie7+
 
 ## Installation
 
@@ -15,36 +17,17 @@ Then generate your new project:
 ```bash
 mkdir demo
 cd demo
-weus init
+# 在当前目录下创建工程
+weus init 
+# 在新的目录中创建工程
+weus init projectName
 ```
 
 ## Install Dependencies
 
 ```bash
-cd demo && npm install
-```
-
-### start your project server:
-
-```bash
-npm run dll
-npm start
-```
-
-### Unit Test
-```bash
-npm run test
-```
-or watch test
-
-```bash
-npm run test-watch
-```
-
-### build your project:
-
-```bash
-npm run build
+cd projectName # 如果执行了命令 weus init projectName
+npm install
 ```
 
 ## Generate your module
@@ -53,20 +36,40 @@ npm run build
 weusg moduleName
 ```
 
-Note: The "moduleName" is you enter module name. After exec this command, 
-it will create "react component", "redux action", and "redux reducer" etc.
+Note: First, Assets support custom to create the module.
+The "moduleName" is you enter module name. 
+After exec this command, it will create "react component", "redux action", and "redux reducer" etc. 
+for "react-redux-router-base" asset.
 
+## Other Command
+
+* `weus info <asset_name>` 查看指定基础框架信息
+* `weus list` 查看所有基础框架信息
+* `weus search [options]` 根据给定的信息搜索基础框架信息
+
+## Weus assets
+
+You can view [ths weus assets](./assets.json).
+
+## Help and Version
+
+```bash
+weus -v // Check CLI version
+weus --help // Get help and check usage
+```
 
 ## Weus Development
 
-### wern templates
-
-The wern-cli generator react templates can download from the github `https://github.com/enjoyfuture/wern-template`.
-
-### compile 
+## development
 
 ```
-npm run compile
+npm run watch
+```
+
+### build 
+
+```
+npm run build
 ```
 
 ### npm publish
@@ -80,14 +83,7 @@ npm publish
 [Change Log](./CHANGELOG.md)
 
 
-## Help and Version
-
-```bash
-wern -v // Check CLI version
-wern --help // Get help and check usage
-```
-
-
 ## Reference
 
 * https://github.com/nowa-webpack/nowa
+* http://mern.io/
