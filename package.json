@@ -1,6 +1,6 @@
 {
   "name": "weus",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": {
     "name": "wangyanjun"
   },
@@ -30,7 +30,7 @@
     "elegant-spinner": "^1.0.1",
     "fullname": "^3.3.0",
     "glob": "^7.1.2",
-    "inquirer": "^3.1.0",
+    "inquirer": "^3.1.1",
     "log-update": "^2.0.0",
     "mkdirp": "^0.5.1",
     "moment": "^2.18.1",
@@ -51,11 +51,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@gitlab.cbpmgt.com:fe-team/weus.git"
+    "url": "git@github.com:joy-web/weus.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "http://gitlab.cbpmgt.com/fe-team/weus/issues"
+    "url": "https://github.com/joy-web/weus/issues"
   },
-  "homepage": "http://gitlab.cbpmgt.com/fe-team/weus#readme"
+  "homepage": "https://github.com/joy-web/weus#readme"
 }

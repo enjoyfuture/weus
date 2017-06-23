@@ -55,7 +55,7 @@ if (commander.args.length === 1) {
   cd(commander.args[0]);
 }
 
-// 从 gitlab 中拉取模板
+// 从 git 中拉取模板
 const fetchRepFromGit = () => {
   return new Promise((resolve, reject) => {
     const interval = setInterval(() => {

@@ -3,9 +3,9 @@
     "name": "react-redux-router-base",
     "description": "基于 Webpack, React, Redux, Router, Immutable, etc. 搭建的前端开发框架",
     "author": "Linder Wang",
-    "git": "git@gitlab.cbpmgt.com:fe-team/react-redux-router-base.git",
+    "git": "git@github.com:joy-web/react-redux-router-base.git",
     "git-branch": "master",
-    "issues": "http://gitlab.cbpmgt.com/fe-team/react-redux-router-base/issues"
+    "issues": "https://github.com/joy-web/react-redux-router-base/issues"
   },
   {
     "name": "web-front-framework",
