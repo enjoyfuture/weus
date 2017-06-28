@@ -66,6 +66,8 @@ const fetchRepFromGit = () => {
 
     // Pull the corresponding variant into the given folder repository
     const gitRepo = assetsMap[selectedAsset];
+    console.log(chalk.green(`git pull ${gitRepo.git} ${gitRepo['git-branch']}`));
+
     exec(`git pull ${gitRepo.git} ${gitRepo['git-branch']}`, (code) => {
       clearInterval(interval);
       logUpdate.clear();
