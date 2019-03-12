@@ -2,10 +2,10 @@
  * Helper functions which will passed while rendering ejs
  */
 export default {
-  //首字母大写
+  // 首字母大写
   capitalize: n => n.charAt(0).toUpperCase() + n.slice(1),
 
-  //拼接字符
+  // 拼接字符
   spliceString(str) {
     if (!str) {
       return '';
@@ -19,5 +19,5 @@ export default {
       }
     });
     return spliceStr;
-  }
+  },
 };

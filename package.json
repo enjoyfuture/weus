@@ -1,6 +1,6 @@
 {
-  "name": "weus",
-  "version": "0.1.3",
+  "name": "@weus/cli",
+  "version": "0.2.0",
   "author": {
     "name": "wangyanjun"
   },
@@ -39,6 +39,7 @@
     "shelljs": "^0.7.8"
   },
   "devDependencies": {
+    "@weus/eslint-config": "0.0.2",
     "babel-cli": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-preset-es2015": "^6.24.1",

@@ -7,13 +7,12 @@ import pathExists from 'path-exists';
 import glob from 'glob';
 
 class Actions {
-
   /**
    * 同步创建目录
    * @param dir
    * @param callback
    */
-  createDir(dir, callback) {
+  static createDir(dir, callback) {
     pathExists(dir).then((exist) => {
       if (!exist) {
         mkdirp(dir, callback);
@@ -27,61 +26,26 @@ class Actions {
    * 异步创建目录
    * @param dir
    */
-  createDirSync(dir) {
+  static createDirSync(dir) {
     if (!pathExists.sync(dir)) {
       mkdirp.sync(dir);
     }
   }
 
   /**
-   * copy
-   * @param source
+   * dest dir
    * @param dest
+   * @returns {{filePath}|{filePath, configName}|*|string|Promise.<*>}
    */
-  copy(source, dest) {
-    const _source = Array.isArray(source) ? source : [source];
-    const _dest = Array.isArray(dest) ? dest : [dest];
-    const tmplPath = this.templatePath(_source);
-    const destPath = this.destinationPath(_dest);
-
-    let contents = '';
-    try {
-      contents = fs.readFileSync(tmplPath, 'utf8');
-      const directory = destPath.substring(0, destPath.lastIndexOf('/'));
-      this.createDir(directory, () => {
-        fs.writeFileSync(destPath, contents);
-      });
-    } catch (e) {
-      console.log(e);
-      throw new Error('copy file failed!');
+  static destinationPath(dest = []) {
+    let filepath = path.join(...dest);
+    if (!pathIsAbsolute(filepath)) {
+      const pwd = process.env.pwd || process.env.Pwd || process.env.PWD;
+      filepath = path.join(pwd, ...dest);
     }
-  }
-
-  /**
-   * copy Template
-   * @param source
-   * @param dest
-   * @param contents
-   */
-  copyTpl(source, dest, contents = {}) {
-    const _source = Array.isArray(source) ? source : [source];
-    const _dest = Array.isArray(dest) ? dest : [dest];
-    const tmplPath = this.templatePath(_source);
-    const destPath = this.destinationPath(_dest);
-
-    let template = '';
-    try {
-      template = fs.readFileSync(tmplPath, 'utf8');
-      template = ejs.render(template, contents);
-      const directory = destPath.substring(0, destPath.lastIndexOf('/'));
-
-      this.createDir(directory, () => {
-        fs.writeFileSync(destPath, template);
-      });
-    } catch (e) {
-      console.log(e);
-      throw new Error('copyTpl file failed!');
-    }
+    // 以下方法可以指定当前工作目录
+    // process.chdir(filepath);
+    return filepath;
   }
 
   /**
@@ -89,7 +53,7 @@ class Actions {
    * @param source
    * @returns {string}
    */
-  read(source) {
+  static read(source) {
     let contents = '';
     try {
       contents = fs.readFileSync(source, 'utf8');
@@ -105,10 +69,10 @@ class Actions {
    * @param dest
    * @param contents
    */
-  write(dest, contents) {
+  static write(dest, contents) {
     try {
       const directory = dest.substring(0, dest.lastIndexOf('/'));
-      this.createDir(directory, () => {
+      Actions.createDir(directory, () => {
         fs.writeFileSync(dest, contents);
       });
     } catch (e) {
@@ -117,8 +81,8 @@ class Actions {
     }
   }
 
-  updateJson(file, options = {}) {
-    let contents = this.read(file);
+  static updateJson(file, options = {}) {
+    let contents = Actions.read(file);
     const jsonO = JSON.parse(contents);
     Object.keys(options).forEach((key) => {
       if (options[key]) {
@@ -127,7 +91,61 @@ class Actions {
     });
 
     contents = JSON.stringify(jsonO, null, '  ');
-    this.write(file, contents)
+    Actions.write(file, contents);
+  }
+
+  // 上下文路径
+  context = null;
+
+  /**
+   * copy
+   * @param source
+   * @param dest
+   */
+  copy(source, dest) {
+    const arraySource = Array.isArray(source) ? source : [source];
+    const arrayDest = Array.isArray(dest) ? dest : [dest];
+    const tmplPath = this.templatePath(arraySource);
+    const destPath = Actions.destinationPath(arrayDest);
+
+    let contents = '';
+    try {
+      contents = fs.readFileSync(tmplPath, 'utf8');
+      const directory = destPath.substring(0, destPath.lastIndexOf('/'));
+      Actions.createDir(directory, () => {
+        fs.writeFileSync(destPath, contents);
+      });
+    } catch (e) {
+      console.log(e);
+      throw new Error('copy file failed!');
+    }
+  }
+
+  /**
+   * copy Template
+   * @param source
+   * @param dest
+   * @param contents
+   */
+  copyTpl(source, dest, contents = {}) {
+    const arraySource = Array.isArray(source) ? source : [source];
+    const arrayDest = Array.isArray(dest) ? dest : [dest];
+    const tmplPath = this.templatePath(arraySource);
+    const destPath = Actions.destinationPath(arrayDest);
+
+    let template = '';
+    try {
+      template = fs.readFileSync(tmplPath, 'utf8');
+      template = ejs.render(template, contents);
+      const directory = destPath.substring(0, destPath.lastIndexOf('/'));
+
+      Actions.createDir(directory, () => {
+        fs.writeFileSync(destPath, template);
+      });
+    } catch (e) {
+      console.log(e);
+      throw new Error('copyTpl file failed!');
+    }
   }
 
   /**
@@ -136,13 +154,13 @@ class Actions {
    * @param dest
    */
   directory(source, dest) {
-    const _source = Array.isArray(source) ? source : [source];
-    const _dest = Array.isArray(dest) ? dest : [dest];
-    const tmplPath = this.templatePath(_source);
-    const destPath = this.destinationPath(_dest);
+    const arraySource = Array.isArray(source) ? source : [source];
+    const arrayDest = Array.isArray(dest) ? dest : [dest];
+    const tmplPath = this.templatePath(arraySource);
+    const destPath = Actions.destinationPath(arrayDest);
 
-    //All files in source
-    const files = glob.sync('**', {dot: true, nodir: true, cwd: tmplPath});
+    // All files in source
+    const files = glob.sync('**', { dot: true, nodir: true, cwd: tmplPath });
 
     for (let i = 0, len = files.length; i < len; i++) {
       this.copy(path.join(tmplPath, files[i]), path.join(destPath, files[i]));
@@ -167,29 +185,10 @@ class Actions {
 
     return filepath;
   }
-
-  /**
-   * dest dir
-   * @param dest
-   * @returns {{filePath}|{filePath, configName}|*|string|Promise.<*>}
-   */
-  destinationPath(dest = []) {
-    let filepath = path.join(...dest);
-    if (!pathIsAbsolute(filepath)) {
-      const pwd = process.env.pwd || process.env.Pwd || process.env.PWD;
-      filepath = path.join(pwd, ...dest);
-    }
-    // 以下方法可以指定当前工作目录
-    //process.chdir(filepath);
-    return filepath;
-  }
-
 }
 
 const actions = {};
 
-actions.create = () => {
-  return new Actions();
-};
+actions.create = () => new Actions();
 
 export default actions;

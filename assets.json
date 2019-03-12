@@ -1,5 +1,13 @@
 [
   {
+    "name": "code-base-react-redux-weus",
+    "description": "基于 Webpack, React, Redux, Router, Immutable, etc. 搭建的前端开发框架",
+    "author": "Linder Wang",
+    "git": "http://jcode.cbpmgt.com/git/code-base-react-redux-weus.git",
+    "git-branch": "master",
+    "issues": "http://jcode.cbpmgt.com/git/code-base-react-redux-weus.git/issues"
+  },
+  {
     "name": "react-redux-router-base",
     "description": "基于 Webpack, React, Redux, Router, Immutable, etc. 搭建的前端开发框架",
     "author": "Linder Wang",

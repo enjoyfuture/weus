@@ -9,7 +9,7 @@ A Comprehensive Guide for generator web platform. The following are assets.
 First, install weus using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
-npm install -g weus
+npm install -g @weus/cli --registry=http://jnpm.cbpmgt.com/
 ```
 
 Then generate your new project:

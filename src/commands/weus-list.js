@@ -4,14 +4,14 @@ import Table from 'cli-table';
 import assets from '../../assets.json';
 
 commander
-    .parse(process.argv);
+  .parse(process.argv);
 
 const assetsTable = new Table({
-    head: ['Name', 'Description', 'Author'],
+  head: ['Name', 'Description', 'Author'],
 });
 
 // Make a variants table to show to all the variants
-assetsTable.push(...assets.map(v => Object.keys(v).map((k) => v[k]).slice(0, 3)));
+assetsTable.push(...assets.map(v => Object.keys(v).map(k => v[k]).slice(0, 3)));
 
 console.log(chalk.yellow('WEUS assets'));
 console.log(chalk.yellow('-------------'));

@@ -1,0 +1,10 @@
+.gitignore
+node_modules
+test
+src
+.npmrc
+.nvmrc
+.DS_Store
+.idea
+npm-debug.log
+package-lock.json

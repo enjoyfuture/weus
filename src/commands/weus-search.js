@@ -4,25 +4,30 @@ import Table from 'cli-table';
 import assets from '../../assets.json';
 
 commander
-    .parse(process.argv);
+  .parse(process.argv);
 
 if (!commander.args.length) {
-    commander.help();
+  commander.help();
 }
 
 if (commander.args.length > 1) {
-    console.log(chalk.red('Please give only one argument as a search term!!!'));
-    process.exit(1);
+  console.log(chalk.red('Please give only one argument as a search term!!!'));
+  process.exit(1);
 }
 
 const input = commander.args[0];
 const assetsTable = new Table({
-    head: ['Name', 'Description', 'Author'],
+  head: ['Name', 'Description', 'Author'],
 });
-const filteredAssets = assets.filter(variant => variant.name.toLowerCase().search(input.toLowerCase()) !== -1 || variant.description.toLowerCase().search(input.toLowerCase()) !== -1);
+
+const filteredAssets = assets.filter((variant) => {
+  const inputLowerCase = input.toLocaleLowerCase();
+  return variant.name.toLowerCase().search(inputLowerCase) !== -1
+      || variant.description.toLowerCase().search(inputLowerCase) !== -1;
+});
 
 // Make a variants table to show to all the variants matched with the given search string
-assetsTable.push(...filteredAssets.map(v => Object.keys(v).map((k) => v[k]).slice(0, 3)));
+assetsTable.push(...filteredAssets.map(v => Object.keys(v).map(k => v[k]).slice(0, 3)));
 
 console.log(chalk.yellow(`Search results for ${input}`));
 console.log(chalk.yellow('-------------'));
