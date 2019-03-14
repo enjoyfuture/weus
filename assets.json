@@ -8,14 +8,6 @@
     "issues": "http://jcode.cbpmgt.com/git/code-base-react-redux-weus.git/issues"
   },
   {
-    "name": "react-redux-router-base",
-    "description": "基于 Webpack, React, Redux, Router, Immutable, etc. 搭建的前端开发框架",
-    "author": "Linder Wang",
-    "git": "https://github.com/joy-web/react-redux-router-base.git",
-    "git-branch": "master",
-    "issues": "https://github.com/joy-web/react-redux-router-base/issues"
-  },
-  {
     "name": "web-front-framework",
     "description": "基于 fis3 jQuery KnockoutJS RequireJS 搭建的前端开发框架，支持 ie7+",
     "author": "Linder Wang, yaohaiyang",
