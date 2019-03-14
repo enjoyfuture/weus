@@ -58,5 +58,6 @@
   "bugs": {
     "url": "https://github.com/joy-web/weus/issues"
   },
-  "homepage": "https://github.com/joy-web/weus#readme"
+  "homepage": "https://github.com/joy-web/weus#readme",
+  "eslintIgnore": ["lib/*"]
 }
