@@ -7,6 +7,11 @@ import pathExists from 'path-exists';
 import glob from 'glob';
 
 class Actions {
+  constructor() {
+    // 上下文路径
+    this.context = '';
+  }
+
   /**
    * 同步创建目录
    * @param dir
@@ -93,9 +98,6 @@ class Actions {
     contents = JSON.stringify(jsonO, null, '  ');
     Actions.write(file, contents);
   }
-
-  // 上下文路径
-  context = null;
 
   /**
    * copy

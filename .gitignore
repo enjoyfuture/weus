@@ -1,2 +1,14 @@
+
+
 .idea
-node_modules
+.vscode
+*.swp
+
+# 一些不需要提交的 js 文件
+
+/dist/
+/test/
+.DS_Store
+/node_modules/
+/logs/
+/lib/
