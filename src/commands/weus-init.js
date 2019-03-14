@@ -49,7 +49,7 @@ if (commander.args.length === 1) {
   }
 
   mkdir('-p', commander.args[0]);
-  cd(commander.args[0]);
+  // cd(commander.args[0]);
 }
 
 // 创建的 app 文件夹
@@ -61,7 +61,7 @@ const fetchRepFromGit = () => new Promise((resolve, reject) => {
     logUpdate(`Fetching the boilerplate...${chalk.cyan.bold.dim(frame())}`);
   }, 50);
 
-  exec('git init');
+  exec(`cd ${appFolder} && git init`);
 
   // Pull the corresponding variant into the given folder repository
   const gitRepo = assetsMap[selectedAsset];
