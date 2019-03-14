@@ -32,20 +32,20 @@ const assetList = assets.map((asset) => {
 /* eslint-disable no-undef */
 if (!which('git')) {
   console.log(chalk.red('用 weus 生成 react 工程需要你先安装 git!!!'));
-  exit(1);
+  process.exit(1);
 }
 
 // 只支持一个参数，参数名为项目名称
 if (commander.args.length > 1) {
   console.log(chalk.red('只能输入一个参数作为项目的名称!!!'));
-  exit(1);
+  process.exit(1);
 }
 
 // 如果输入一个参数，需要创建文件夹
 if (commander.args.length === 1) {
   if (test('-d', commander.args[0])) {
     console.log(chalk.red(`${commander.args[0]} 目录已存在，请重新命名一个新名称!!!`));
-    exit(1);
+    process.exit(1);
   }
 
   mkdir('-p', commander.args[0]);

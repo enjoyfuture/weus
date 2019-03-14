@@ -14,6 +14,13 @@ const { args } = commander;
 
 // TODO 这里需要判断是否传入参数，待写,
 const moduleName = args[0];
+
+// 只支持一个参数，参数名为项目名称
+if (!moduleName) {
+  console.log(chalk.red('必须输入模块名称!!!'));
+  process.exit(1);
+}
+
 const actionsInst = actions.create();
 // 设置模板根目录
 actionsInst.setContext('module');

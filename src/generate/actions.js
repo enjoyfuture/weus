@@ -99,6 +99,10 @@ class Actions {
     Actions.write(file, contents);
   }
 
+  setContext(context) {
+    this.context = context;
+  }
+
   /**
    * copy
    * @param source
