@@ -9,7 +9,7 @@ A Comprehensive Guide for generator web platform. The following are assets.
 First, install weus using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
-npm install -g @weus/cli --registry=http://jnpm.cbpmgt.com/
+npm install -g @weus/cli
 ```
 
 Then generate your new project:
@@ -18,7 +18,7 @@ Then generate your new project:
 mkdir demo
 cd demo
 # 在当前目录下创建工程
-weus init 
+weus init
 # 在新的目录中创建工程
 weus init projectName
 ```
@@ -37,8 +37,8 @@ weusg moduleName
 ```
 
 Note: First, Assets support custom to create the module.
-The "moduleName" is you enter module name. 
-After exec this command, it will create "react component", "redux action", and "redux reducer" etc. 
+The "moduleName" is you enter module name.
+After exec this command, it will create "react component", "redux action", and "redux reducer" etc.
 for "react-redux-router-base" asset.
 
 ## Other Command
@@ -66,7 +66,7 @@ weus --help // Get help and check usage
 npm run watch
 ```
 
-### build 
+### build
 
 ```
 npm run build
